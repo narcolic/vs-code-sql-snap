@@ -1,9 +1,9 @@
 {
   "name": "sql-snap",
-  "displayName": "sql-snap",
+  "displayName": "SQL Snap",
   "publisher": "DimitriosKarakatsanis",
   "description": "A VS Code extension providing keybindings for commonly used MSSQL commands and additional custom commands.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/narcolic/vs-code-sql-snap.git"
@@ -15,6 +15,7 @@
     "Keymaps",
     "Other"
   ],
+  "icon": "sql-snap-logo.png",
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
