@@ -25,7 +25,8 @@ jobs:
 
     - name: Publish to VS Code Marketplace
       run: |
-        vsce publish --no-yarn
+        VERSION=$(jq -r .version package.json)
+        vsce publish $VERSION --publisher DimitriosKarakatsanis --no-yarn
 
     - name: Create GitHub Release
       run: |
