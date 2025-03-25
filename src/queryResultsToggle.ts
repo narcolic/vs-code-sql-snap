@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 
 let isResultsVisible = false;
 
-export async function toggleQueryResults() {
+export async function queryResultsToggle() {
     if (isResultsVisible) {
         vscode.commands.executeCommand("workbench.action.togglePanel");
     } else {

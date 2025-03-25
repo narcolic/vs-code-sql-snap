@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 
-export async function runQueryBlock() {
+export async function queryBlockRunner() {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
         vscode.window.showErrorMessage("No active SQL editor found.");

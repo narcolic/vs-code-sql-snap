@@ -3,7 +3,7 @@
   "displayName": "SQL Snap",
   "publisher": "DimitriosKarakatsanis",
   "description": "A VS Code extension providing keybindings for commonly used MSSQL commands and additional custom commands.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/narcolic/vs-code-sql-snap.git"
@@ -21,11 +21,11 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.runQueryBlock",
+        "command": "extension.queryBlockRunner",
         "title": "Run Query Block"
       },
       {
-        "command": "extension.toggleQueryResults",
+        "command": "extension.queryResultsToggle",
         "title": "Toggle Query Results Panel"
       }
     ],
@@ -33,7 +33,7 @@
       {
         "key": "f5",
         "command": "mssql.runQuery",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && editorLangId == sql"
       },
       {
         "key": "f8",
@@ -47,12 +47,11 @@
       },
       {
         "key": "ctrl+q",
-        "command": "extension.toggleQueryResults",
-        "when": "editorTextFocus && editorLangId == sql"
+        "command": "extension.queryResultsToggle"
       },
       {
         "key": "ctrl+shift+E",
-        "command": "extension.runQueryBlock",
+        "command": "extension.queryBlockRunner",
         "when": "editorTextFocus && editorLangId == sql"
       }
     ]
