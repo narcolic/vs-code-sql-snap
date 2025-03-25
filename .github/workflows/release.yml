@@ -23,10 +23,14 @@ jobs:
         npm install -g @vscode/vsce
         npm install
 
-    - name: Publish to VS Code Marketplace
+    - name: Login to VSCE (VS Code Marketplace)
       run: |
+        echo $VSCE_TOKEN | vsce login DimitriosKarakatsanis --token
+
+    - name: Publish to VS Code Marketplace
+      run: |        
         VERSION=$(jq -r .version package.json)
-        vsce publish $VERSION --publisher DimitriosKarakatsanis --no-yarn
+        vsce publish $VERSION --no-yarn
 
     - name: Create GitHub Release
       run: |
