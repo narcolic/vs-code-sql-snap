@@ -28,7 +28,7 @@ jobs:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
       run: |        
         VERSION=$(jq -r .version package.json)
-        npm run vsce -- publish $VERSION -p $VSCE_TOKEN
+        vsce publish $VERSION -p $VSCE_TOKEN
 
     - name: Create GitHub Release
       run: |
