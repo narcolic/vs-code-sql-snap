@@ -23,10 +23,6 @@ jobs:
         npm install -g @vscode/vsce
         npm install
 
-    - name: Login to VSCE (VS Code Marketplace)
-      run: |
-        echo $VSCE_TOKEN | vsce login DimitriosKarakatsanis
-
     - name: Publish to VS Code Marketplace
       env:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
