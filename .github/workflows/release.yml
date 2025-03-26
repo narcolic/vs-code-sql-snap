@@ -23,6 +23,12 @@ jobs:
         npm install -g @vscode/vsce
         npm install
 
+    - name: Package the extension
+      run: vsce package
+
+    - name: Store the vsix filename
+      run: echo "VSIX_FILE=$(ls *.vsix)" >> $GITHUB_ENV
+
     - name: Publish to VS Code Marketplace
       env:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
@@ -31,12 +37,9 @@ jobs:
         vsce publish $VERSION -p $VSCE_TOKEN
 
     - name: Create GitHub Release
-      run: |
-        # Create a GitHub release
-        gh release create v$(jq -r .version package.json) \
-          --title "Release v$(jq -r .version package.json)" \
-          --notes "Release v$(jq -r .version package.json)" \
-          $(ls *.vsix)
-
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        VERSION=$(jq -r .version package.json)
+        ls -lh *.vsix  # Debugging step
+        gh release create v$VERSION --title "Release v$VERSION" --notes "Release v$VERSION" "$VSIX_FILE"
