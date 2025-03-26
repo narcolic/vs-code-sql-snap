@@ -28,9 +28,11 @@ jobs:
         echo $VSCE_TOKEN | vsce login DimitriosKarakatsanis
 
     - name: Publish to VS Code Marketplace
+      env:
+        VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
       run: |        
         VERSION=$(jq -r .version package.json)
-        vsce publish $VERSION --no-yarn
+        npm run vsce -- publish $VERSION -p $VSCE_TOKEN
 
     - name: Create GitHub Release
       run: |
@@ -41,5 +43,4 @@ jobs:
           $(ls *.vsix)
 
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
